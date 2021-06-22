@@ -46,4 +46,14 @@ object FirstPrinciples extends App {
   val foreachSink = Sink.foreach[String](println)
   val headSink = Sink.head[Int] // retrieves the head and then closes the stream
   val foldSink = Sink.fold[Int, Int](0)(_ + _)
+
+  // flows
+  val mapFlow = Flow[Int].map(_ * 2)
+  val takeFlow = Flow[Int].take(5)
+  // drop, filter, ...
+  // does NOT have flatMap - does not seem to be up-to-date, e.g flatMapConcat, flatMapMerge, ...
+
+  // source -> flow -> flow -> ... -> sink
+  val doubleFlowGraph = source.via(mapFlow).via(takeFlow).to(sink)
+  doubleFlowGraph.run()
 }
