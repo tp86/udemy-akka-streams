@@ -1,7 +1,7 @@
 package part2_primer
 
 import akka.actor.ActorSystem
-import akka.stream.scaladsl.{Sink, Source}
+import akka.stream.scaladsl.{Flow, Sink, Source}
 
 object FirstPrinciples extends App {
 
@@ -14,5 +14,15 @@ object FirstPrinciples extends App {
   val sink = Sink.foreach[Int](println)
 
   val graph = source.to(sink)
-  graph.run()
+  //graph.run()
+
+  // flows transform elements
+  val flow = Flow[Int].map(_ + 1)
+  val sourceWithFlow = source.via(flow)
+  val sinkWithFlow = flow.to(sink)
+
+  val graph2 = sourceWithFlow.to(sink)
+  //graph2.run()
+  //source.to(sinkWithFlow).run()
+  //source.via(flow).to(sink).run()
 }
