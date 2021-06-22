@@ -1,4 +1,4 @@
-import mill._, scalalib._
+import mill._, scalalib._, scalafmt._
 
 object versions {
   val scala = "2.13.6"
@@ -6,7 +6,7 @@ object versions {
   val scalaTest = "3.2.9"
 }
 
-object playground extends ScalaModule {
+trait AkkaModule extends ScalaModule with ScalafmtModule {
   def scalaVersion = versions.scala
   def ivyDeps = Agg(
     ivy"com.typesafe.akka::akka-stream:${versions.akka}",
@@ -15,3 +15,7 @@ object playground extends ScalaModule {
     ivy"org.scalatest::scalatest:${versions.scalaTest}"
   )
 }
+
+object playground extends AkkaModule
+
+object part2_primer extends AkkaModule
