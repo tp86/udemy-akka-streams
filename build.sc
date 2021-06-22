@@ -14,6 +14,10 @@ trait AkkaModule extends ScalaModule with ScalafmtModule {
     ivy"com.typesafe.akka::akka-testkit:${versions.akka}",
     ivy"org.scalatest::scalatest:${versions.scalaTest}"
   )
+  def scalacOptions = super.scalacOptions() ++ Seq(
+    "-language:postfixOps",
+    "-deprecation"
+  )
 }
 
 object playground extends AkkaModule

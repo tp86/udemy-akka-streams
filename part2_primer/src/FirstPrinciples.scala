@@ -25,4 +25,19 @@ object FirstPrinciples extends App {
   //graph2.run()
   //source.to(sinkWithFlow).run()
   //source.via(flow).to(sink).run()
+
+  // nulls are NOT allowed
+  //val illegalSource = Source.single[String](null)
+  //illegalSource.to(Sink.foreach(println)).run()
+  // use Options instead
+
+  // various kinds of sources
+  val finiteSource = Source.single(1)
+  val anotherFiniteSource = Source(List(1, 2, 3))
+  val emptySource = Source.empty[Int]
+  val infiniteSource = Source(LazyList.from(1))
+
+  import scala.concurrent.ExecutionContext.Implicits.global
+  import scala.concurrent.Future
+  val futureSource = Source.future(Future(42))
 }
