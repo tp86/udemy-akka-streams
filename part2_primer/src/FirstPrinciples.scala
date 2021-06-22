@@ -40,4 +40,10 @@ object FirstPrinciples extends App {
   import scala.concurrent.ExecutionContext.Implicits.global
   import scala.concurrent.Future
   val futureSource = Source.future(Future(42))
+
+  // sinks
+  val theMostBoringSink = Sink.ignore // does nothing with elements
+  val foreachSink = Sink.foreach[String](println)
+  val headSink = Sink.head[Int] // retrieves the head and then closes the stream
+  val foldSink = Sink.fold[Int, Int](0)(_ + _)
 }
