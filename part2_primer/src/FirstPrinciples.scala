@@ -55,11 +55,19 @@ object FirstPrinciples extends App {
 
   // source -> flow -> flow -> ... -> sink
   val doubleFlowGraph = source.via(mapFlow).via(takeFlow).to(sink)
-  doubleFlowGraph.run()
+  //doubleFlowGraph.run()
 
   // syntactic sugars
   val mapSource =
     Source(1 to 10).map(_ * 2) // Source(1 to 10).via(Flow[Int].map(_ * 2))
   // run streams directly
-  mapSource.runForeach(println) // mapSource.to(Sink.foreach(println)).run()
+  //mapSource.runForeach(println) // mapSource.to(Sink.foreach(println)).run()
+
+  /** Exercise: create a stream that takes the names of persons, then keep the first 2 names with length > 5 characters.
+    */
+  val names = Source(List("name", "John Doe", "Jane Doe", "John Doe Jr."))
+  val filterLength = Flow[String].filter(_.length > 5)
+  val limit = Flow[String].take(2)
+  val namesStream = names.via(filterLength).via(limit).to(foreachSink)
+  namesStream.run()
 }
