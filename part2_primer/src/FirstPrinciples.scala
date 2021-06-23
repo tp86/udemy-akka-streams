@@ -56,4 +56,10 @@ object FirstPrinciples extends App {
   // source -> flow -> flow -> ... -> sink
   val doubleFlowGraph = source.via(mapFlow).via(takeFlow).to(sink)
   doubleFlowGraph.run()
+
+  // syntactic sugars
+  val mapSource =
+    Source(1 to 10).map(_ * 2) // Source(1 to 10).via(Flow[Int].map(_ * 2))
+  // run streams directly
+  mapSource.runForeach(println) // mapSource.to(Sink.foreach(println)).run()
 }
