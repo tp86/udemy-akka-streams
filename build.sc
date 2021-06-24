@@ -12,11 +12,12 @@ trait AkkaModule extends ScalaModule with ScalafmtModule {
     ivy"com.typesafe.akka::akka-stream:${versions.akka}",
     ivy"com.typesafe.akka::akka-stream-testkit:${versions.akka}",
     ivy"com.typesafe.akka::akka-testkit:${versions.akka}",
-    ivy"org.scalatest::scalatest:${versions.scalaTest}"
+    ivy"org.scalatest::scalatest:${versions.scalaTest}",
   )
   def scalacOptions = super.scalacOptions() ++ Seq(
     "-language:postfixOps",
-    "-deprecation"
+    "-deprecation",
+    "-Wunused:imports",
   )
 }
 

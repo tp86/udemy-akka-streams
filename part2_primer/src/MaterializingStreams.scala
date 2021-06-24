@@ -3,11 +3,8 @@ package part2_primer
 import akka.actor.ActorSystem
 import akka.stream.scaladsl.{Flow, Keep, Sink, Source}
 
-import scala.util.{Failure, Success}
-
 object MaterializingStreams extends App {
   implicit val system = ActorSystem("MaterializingStreams")
-  import system.dispatcher
 
   val simpleGraph = Source(1 to 10).to(Sink.foreach(println))
   //val simpleMaterializedValue = simpleGraph.run() // NotUsed
@@ -55,20 +52,20 @@ object MaterializingStreams extends App {
     List(
       "Akka is awesome",
       "I love streams",
-      "Materialized values are killing me"
-    )
+      "Materialized values are killing me",
+    ),
   )
   val wordCountSink = Sink.fold[Int, String](0)((currentWords, newSentence) =>
-    currentWords + newSentence.split(" ").length
+    currentWords + newSentence.split(" ").length,
   )
   val g1 = sentenceSource.toMat(wordCountSink)(Keep.right).run()
   val g2 = sentenceSource.runWith(wordCountSink)
   val g3 = sentenceSource.runFold(0)((currentWords, newSentence) =>
-    currentWords + newSentence.split(" ").length
+    currentWords + newSentence.split(" ").length,
   )
 
   val wordCountFlow = Flow[String].fold[Int](0)((currentWords, newSentence) =>
-    currentWords + newSentence.split(" ").length
+    currentWords + newSentence.split(" ").length,
   )
   val g4 = sentenceSource.via(wordCountFlow).toMat(Sink.head)(Keep.right).run()
   val g5 = sentenceSource
