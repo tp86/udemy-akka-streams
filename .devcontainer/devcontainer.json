@@ -1,0 +1,21 @@
+{
+    "name": "Java @ Arch",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "extensions": [
+        "scalameta.metals",
+        "ryanluker.vscode-coverage-gutters",
+        "alexcvzz.vscode-sqlite",
+        "vscjava.vscode-java-debug"
+    ],
+    "settings": {
+        "metals.javaHome": "/usr/lib/jvm/default",
+        "terminal.integrated.defaultProfile.linux": "/bin/bash",
+        "coverage-gutters.coverageBaseDir": "target/scala*/jacoco/report",
+        "coverage-gutters.coverageReportFileName": "${coverageBaseDir}/index.html"
+    },
+    "remoteUser": "vscode",
+    // Workaround for Metals not being able to download with coursier issue
+    "postAttachCommand": "mkdir -p ~/.cache/coursier/v1 && ln -sf ~/.cache/coursier/v1 .coursier"
+}
