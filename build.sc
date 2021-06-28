@@ -24,3 +24,5 @@ trait AkkaModule extends ScalaModule with ScalafmtModule {
 object playground extends AkkaModule
 
 object part2_primer extends AkkaModule
+
+object part3_graphs extends AkkaModule
