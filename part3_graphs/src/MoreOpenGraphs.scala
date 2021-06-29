@@ -19,8 +19,8 @@ object MoreOpenGraphs extends App {
   val max3StaticGraph = GraphDSL.create() { implicit builder =>
     import GraphDSL.Implicits._
 
-    val max1 = builder.add(ZipWith[Int, Int, Int]((a, b) => Math.max(a, b)))
-    val max2 = builder.add(ZipWith[Int, Int, Int]((a, b) => Math.max(a, b)))
+    val max1 = builder.add(ZipWith[Int, Int, Int](Math.max))
+    val max2 = builder.add(ZipWith[Int, Int, Int](Math.max))
 
     max1.out ~> max2.in0
 
