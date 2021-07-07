@@ -1,15 +1,12 @@
 package part4_techniques
 
-import akka.actor.ActorSystem
+import akka.actor.{Actor, ActorLogging, ActorSystem, Props}
 import akka.stream.scaladsl.{Sink, Source}
+import akka.util.Timeout
 
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 import scala.concurrent.Future
-import akka.actor.Actor
-import akka.actor.ActorLogging
-import akka.actor.Props
-import akka.util.Timeout
 
 object IntegratingWithExternalServices extends App {
   implicit val system = ActorSystem("IntegratingWithExternalServices")
