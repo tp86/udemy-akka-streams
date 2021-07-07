@@ -67,5 +67,17 @@ object AdvancedBackpressure extends App {
     .via(aggregateNotificationFlow)
     .async
     .to(Sink.foreach[Notification](sendEmailSlow))
-    .run()
+  //.run()
+
+  /** Slow producers - extrapolate/expand */
+  import scala.concurrent.duration._
+  val slowCounter = Source(LazyList.from(1)).throttle(1, 1 second)
+  val hungrySink = Sink.foreach[Int](println)
+
+  val extrapolator = Flow[Int].extrapolate(element => Iterator.from(element))
+  val repeater = Flow[Int].extrapolate(element => Iterator.continually(element))
+
+  slowCounter.via(repeater).to(hungrySink).run()
+
+  val expander = Flow[Int].expand(element => Iterator.from(element))
 }
