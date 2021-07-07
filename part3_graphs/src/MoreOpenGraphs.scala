@@ -63,11 +63,11 @@ object MoreOpenGraphs extends App {
     */
 
   case class Transaction(
-      id: String,
-      source: String,
+      id:        String,
+      source:    String,
       recipient: String,
-      amount: Int,
-      date: LocalDateTime)
+      amount:    Int,
+      date:      LocalDateTime)
 
   val transactionSource = Source(
     List(
