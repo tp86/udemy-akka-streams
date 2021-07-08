@@ -65,7 +65,7 @@ object AdvancedBackpressure extends App {
 
   eventSource
     .via(aggregateNotificationFlow)
-    .async
+    .async // to make it run on different actors and see the effects
     .to(Sink.foreach[Notification](sendEmailSlow))
   //.run()
 
