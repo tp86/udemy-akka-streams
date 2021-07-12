@@ -11,7 +11,7 @@
     ],
     "settings": {
         "metals.javaHome": "/usr/lib/jvm/default",
-        "terminal.integrated.defaultProfile.linux": "/bin/bash",
+        "terminal.integrated.defaultProfile.linux": "bash",
         "coverage-gutters.coverageBaseDir": "target/scala*/jacoco/report",
         "coverage-gutters.coverageReportFileName": "${coverageBaseDir}/index.html"
     },
