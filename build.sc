@@ -36,3 +36,5 @@ object part3_graphs extends AkkaModule
 object part4_techniques extends AkkaModule {
   object testing extends Tests with TestModule.ScalaTest
 }
+
+object part5_advanced extends AkkaModule
