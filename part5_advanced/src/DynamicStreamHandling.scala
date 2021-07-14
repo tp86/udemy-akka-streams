@@ -1,5 +1,3 @@
-package part5_advanced
-
 import akka.actor.ActorSystem
 import akka.stream.KillSwitches
 import akka.stream.scaladsl.{BroadcastHub, Keep, MergeHub, Sink, Source}

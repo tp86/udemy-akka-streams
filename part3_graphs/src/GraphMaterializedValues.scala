@@ -1,5 +1,3 @@
-package part3_graphs
-
 import akka.actor.ActorSystem
 import akka.stream.scaladsl.{Broadcast, Flow, GraphDSL, Keep, Sink, Source}
 import akka.stream.{FlowShape, SinkShape}

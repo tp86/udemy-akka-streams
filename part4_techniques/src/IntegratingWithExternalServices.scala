@@ -1,5 +1,3 @@
-package part4_techniques
-
 import akka.actor.{Actor, ActorLogging, ActorSystem, Props}
 import akka.stream.scaladsl.{Sink, Source}
 import akka.util.Timeout

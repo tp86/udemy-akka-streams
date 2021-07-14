@@ -1,5 +1,3 @@
-package part4_techniques
-
 import akka.actor.ActorSystem
 import akka.stream.OverflowStrategy
 import akka.stream.scaladsl.{Flow, Sink, Source}

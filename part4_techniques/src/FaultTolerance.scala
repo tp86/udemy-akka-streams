@@ -1,5 +1,3 @@
-package part4_techniques
-
 import akka.actor.ActorSystem
 import akka.stream.scaladsl.{RestartSource, Sink, Source}
 import akka.stream.{ActorAttributes, RestartSettings, Supervision}

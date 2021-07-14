@@ -1,5 +1,3 @@
-package part4_techniques
-
 import akka.Done
 import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, Props}
 import akka.stream.scaladsl.{Flow, Sink, Source}

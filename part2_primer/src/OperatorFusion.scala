@@ -1,5 +1,3 @@
-package part2_primer
-
 import akka.actor.{Actor, ActorSystem, Props}
 import akka.stream.scaladsl.{Flow, Sink, Source}
 

@@ -1,5 +1,3 @@
-package part3_graphs
-
 import akka.NotUsed
 import akka.actor.ActorSystem
 import akka.stream.ClosedShape
