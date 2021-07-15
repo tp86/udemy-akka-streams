@@ -52,7 +52,7 @@ object Substreams extends App {
 
   val anotherCharCountFuture = Source(text.toList)
     .splitWhen(_ == '\n')
-    .filter(_ != '\n')
+    .filter(c => c != '\n' && c != '\r')
     .map(_ => 1)
     .mergeSubstreams
     .toMat(Sink.reduce[Int](_ + _))(Keep.right)
